@@ -138,7 +138,6 @@ describe.only ('FastFood.test.js', function () {
             const orderRow = await pageCart.getOrderRow(item.package.toUpperCase());
             const itemQuantity = await pageCart.getItemQuantity(orderRow);
             const itemPrice = await pageCart.getItemPrice(orderRow);
-            const itemPriceTotal = await pageCart.getItemPriceTotal(orderRow);
 
             const quantity = Number(await itemQuantity.getText());
             const price = ((await itemPrice.getText()).replaceAll('$', ''));
@@ -147,11 +146,8 @@ describe.only ('FastFood.test.js', function () {
             let finalPrice = eval(priceWithout$);
 
             const totalItemPrice = Number (finalPrice * quantity);
-            console.log(totalItemPrice);
         }
-
         cartTotalAmount = Number ((await pageCart.getCartTotal().getText()).replace('Total: $', ''));
-        console.log(cartTotalAmount);
     });
 
     it ('Performs checkout', async function() {
