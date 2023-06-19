@@ -58,11 +58,11 @@ describe.only ('FastFood.test.js', function () {
 
     it ('Successfully performs registration', async function () {
 
-        await pageRegister.fillInputFirstName(testData.registration.firstname);
-        await pageRegister.fillInputLastName(testData.registration.lastname);
+        await pageRegister.fillInputFirstName(process.env.LOGIN_USERNAME);
+        await pageRegister.fillInputLastName(process.env.LOGIN_PASSWORD);
 
         const randomNumber = pageRegister.random(15000, 1500000000);
-        await pageRegister.fillInputEmail(testData.registration.email + randomNumber);
+        await pageRegister.fillInputEmail(process.env.LOGIN_EMAIL + randomNumber);
         await pageRegister.fillInputUsername(process.env.LOGIN_USERNAME + "." + randomNumber);
         await pageRegister.fillInputPassword(process.env.LOGIN_PASSWORD);
         await pageRegister.fillInputPasswordConfirm(process.env.LOGIN_PASSWORD);
