@@ -1,9 +1,4 @@
 {
-  "registration": {
-    "firstname": "franc",
-    "lastname": "kafka",
-    "email": "kafka@test.ttt"
-  },
   "order": [
     {
       "package": "Double burger",
