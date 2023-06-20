@@ -7,10 +7,24 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 require('dotenv').config();
 
-describe ('api.test.qa.rs', () => {
+describe.only ('api.test.qa.rs', () => {
     let request;
 
     before(() => {
         request = chai.request(process.env.API_BASE_URL);
+    });
+
+    it ('Gets information about users payment', (done) => {
+       request.post('/payment')
+           .send({
+            'order_id': 628,
+            'user_id': process.env.USER_ID,
+            'status': "paid",
+            'amount': 80.54
+           })
+           .end((error, response) => {
+               response.should.have.status(200);
+               done();
+           });
     });
 });
